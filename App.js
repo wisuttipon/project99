@@ -1,75 +1,41 @@
-import React, { Component } from 'react';
-import { Alert, TouchableOpacity,Text,TextInput, View, ImageBackground, } from 'react-native';
-import styles from './component/styes';
-import { AntDesign } from '@expo/vector-icons'; 
-import { Dimensions } from 'react-native';
-import bglogin from './assets/bg.png';
+import React from "react";
+import Login from "./component/Login";
+import Loading from "./component/Loading";
+import Register from "./component/Register"
+import { View, Text, ActivityIndicator, StyleSheet } from "react-native";
+import * as firebase from "firebase";
+import {
+  createSwitchNavigator,
+  createStackNavigator,
+  createAppContainer
+} from "react-navigation";
 
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
+import "firebase/auth";
 
-const App=()=> {
+const firebaseConfig = {
+  apiKey: "AIzaSyDBUJcZuRBl-VvPi_alLqkyuKEEzy1dikE",
+  authDomain: "projectx-781a7.firebaseapp.com",
+  databaseURL: "https://projectx-781a7-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "projectx-781a7",
+  storageBucket: "projectx-781a7.appspot.com",
+  messagingSenderId: "74215826368",
+  appId: "1:74215826368:web:c31465fb84063c735fde25",
+  measurementId: "G-XJ6Q1EX6YT"
+};
 
-  const onRegister =()=>{
-    console.log('You have been clicked a registerbutton!');
-  }
-  const onLogin =()=>{
-    console.log('You have been clicked a loginbutton!');
-  }
- 
-  
-  
+firebase.initializeApp(firebaseConfig);
+
+const RootStack = createSwitchNavigator(
+  {
+    Loading: Loading,
+    Register: Register,
+    Login: Login,
     
-    return (
-      <ImageBackground
-      style={{ flex: 1 , width:windowWidth ,height:windowHeight,justifyContent:'center',alignItems:'center'}} 
-        source={bglogin}
-      >
-      <View style={styles.container}>
-      <View style={styles.loginText3}> <Text style={{color:'#00000090',fontSize:50,marginTop:-100}}>SINGUP</Text></View>
-      <View style={styles.loginText2}> <Text style={{color:'#00000090',}}>Email</Text></View>
-        <View style={styles.inputContainer}>
-        <AntDesign name="mail" size={17} color="black" style={styles.inputIcon}/> 
-        <TextInput 
-          //value={this.state.username}
-          onChangeText={(username) => this.setState({ username })}
-          placeholder={'Enter your Email'}
-          style={styles.input}
-        />
-        </View>
-        
-        <View style={styles.loginText2}> <Text style={{color:'#00000090',}}>Password</Text></View>
-        <View style={styles.inputContainer}>
-        <AntDesign name="lock" size={17} color="black" style={styles.inputIcon}/> 
-        <TextInput
-          //value={this.state.password}
-          onChangeText={(password) => this.setState({ password })}
-          placeholder={'Enter your Password'}
-          secureTextEntry={true}
-          style={styles.input}
-        />
-        </View>
-       
-      <TouchableOpacity
-       onPress ={onLogin}
-          style={styles.loginScreenButton}
-          underlayColor='#fff'>
-          <Text style={styles.loginText}>LOGIN</Text>
-     </TouchableOpacity>
-     
-      <TouchableOpacity
-       onPress ={onRegister}
-          style={styles.loginScreenButton1}
-          underlayColor='#fff'>
-        
-          <Text style={styles.loginText1}>Register</Text>
-     </TouchableOpacity>
-     
-      </View>
-      </ImageBackground>
-      
-      
-    );
-  
-}
+  },
+  {
+    initialRouteName: "Loading"
+  }
+);
+
+const App = createAppContainer(RootStack);
 export default App

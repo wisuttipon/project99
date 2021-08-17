@@ -2,20 +2,26 @@ import React from "react";
 import { View, Text, ActivityIndicator, StyleSheet } from "react-native";
 import * as firebase from "firebase";
 
-export default class Loading extends React.Component {
-  componentDidMount() {
+
+
+const Loading = ({navigation}) => {
+  const componentDidMount = () =>  
+  {
     firebase.auth().onAuthStateChanged(user => {
-      this.props.navigation.navigate(user ? "Main" : "SignUp");
+    navigation.navigate(user ? "Login" : "Register");
     });
   }
-  render() {
-    return (
+  componentDidMount() 
+
+   
+  return (
       <View style={styles.container}>
+        
         <Text>Loading</Text>
         <ActivityIndicator size="large" />
       </View>
-    );
-  }
+    );  
+  
 }
 const styles = StyleSheet.create({
   container: {
@@ -24,3 +30,4 @@ const styles = StyleSheet.create({
     alignItems: "center"
   }
 });
+export default Loading

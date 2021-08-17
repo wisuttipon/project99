@@ -5,24 +5,18 @@ const windowWidth = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
       
-    containerBG: {
-      flex: 1,
-      padding: 10,
-    },
     container:  {
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
-      //backgroundColor: '#ecf0f170', 
+      //backgroundColor: '#ecf0f1', 
       padding: 10,
-      marginTop:150,
+      marginTop:75,
     },
     inputContainer: {
       marginTop:5
 
     },
-    
-    
 
      input: {
       width: windowWidth-80,
@@ -31,13 +25,14 @@ const styles = StyleSheet.create({
       borderWidth: 1,
       borderColor: 'black',
       marginBottom: 10,
-      backgroundColor: '#ecf0f180',
+      backgroundColor: '#ecf0f1',
       paddingLeft: 44,
       borderRadius: 10,
     },
     inputIcon:{
       position: 'absolute',
       top:12,
+      zIndex:1,
       left:17,
     },
     loginScreenButton:{
@@ -78,25 +73,30 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize :22,
         paddingRight : 10
-
     },
     loginText2:{
       textAlign:'left',
-      float :'left',
-      justifyContent:'left',
       width: windowWidth-80, 
       color:'#fff',
-
-  },
-   loginText3:{
-    textAlign:'center',
-    float :'center',
-    justifyContent:'center',
-    color:'#fff',
-    fontSize :92,
-    
-
-},
+    },
+    loginText3:{
+     textAlign:'center',
+     justifyContent:'center',
+     color:'#fff',
+     fontSize :92,
+    },
+    Textsigup:{
+      color:'#00000090',
+      fontSize:50,
+      marginTop:-100,
+      color:'#439de4'
+    },
+    Textemail:{
+      color:'#00000090',
+    },
+    Textpass:{
+      color:'#00000090',
+    },
     loginText1:{
       color:'#439de4',
       textAlign:'center',
