@@ -2,15 +2,17 @@ import React from "react";
 import Login from "./component/Login";
 import Loading from "./component/Loading";
 import Register from "./component/Register"
+import Home from "./component/Home";
 import { View, Text, ActivityIndicator, StyleSheet } from "react-native";
 import * as firebase from "firebase";
+import "firebase/auth";
 import {
   createSwitchNavigator,
   createStackNavigator,
   createAppContainer
 } from "react-navigation";
 
-import "firebase/auth";
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyDBUJcZuRBl-VvPi_alLqkyuKEEzy1dikE",
@@ -30,10 +32,10 @@ const RootStack = createSwitchNavigator(
     Loading: Loading,
     Register: Register,
     Login: Login,
-    
+    Home: Home,
   },
   {
-    initialRouteName: "Loading"
+    initialRouteName: "Login"
   }
 );
 

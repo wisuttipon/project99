@@ -1,4 +1,5 @@
 import React, { Component, useState } from "react";
+import { useFonts } from "expo-font";
 import {
   Alert,
   TouchableOpacity,
@@ -10,27 +11,51 @@ import {
 import styles from "./styes";
 import { AntDesign } from "@expo/vector-icons";
 import { Dimensions } from "react-native";
-import bglogin from "../assets/bg2.jpg";
 import * as firebase from "firebase";
+import bglogin from "../assets/bg2.jpg";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
 
-const App = ({navigation}) => {
+const Login = ({navigation}) => {
+
   const [email, setEmail] = useState("");
-
   const [password, setPassword] = useState("");
-
+  
   const onRegister = () => {
     console.log("You have been clicked a registerbutton!");
   };
   const onLogin = () => {
-    
     console.log(email.email);
     console.log(password.password);
-  };
 
+    try {
+      if (email !== '' && password !== '') {
+        firebase
+      .auth()
+      .signInWithEmailAndPassword(email.email, password.password)
+      .then(() => {
+        navigation.navigate("Home");
+        console.log("success");
+      })
+      .catch(error => Alert.alert(
+        "Login failed","Please check your email or password "
+
+      ));
+
+      }
+    } catch (error) {
+      console.log(error.toString());
+    }
+          
+  };
+  const [loaded] = useFonts({
+    Montserrat: require("../assets/static/Medium.ttf"),
+  });
+  if (!loaded) {
+    return null;
+  }
   return (
     <ImageBackground
       style={{
@@ -44,7 +69,7 @@ const App = ({navigation}) => {
     >
       <View style={styles.container}>
         <View style={styles.loginText3}>
-          <Text style={styles.Textsigup}>SINGUP</Text>
+          <Text style={styles.Textsigup}>SINGIN</Text>
         </View>
         <View style={styles.loginText2}>
           <Text style={styles.Textemail}>Email</Text>
@@ -100,4 +125,4 @@ const App = ({navigation}) => {
     </ImageBackground>
   );
 };
-export default App;
+export default Login;

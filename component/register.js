@@ -1,5 +1,5 @@
 import React, { Component, useState } from "react";
-
+import { useFonts } from "expo-font";
 import {
   Alert,
   TouchableOpacity,
@@ -17,14 +17,15 @@ import * as firebase from "firebase";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
-const App = ({ navigation }) => {
+const Register = ({ navigation }) => {
   const [email, setEmail] = useState("");
-
+  
   const [password, setPassword] = useState("");
 
   const [confirmPassword, setconfirmPassword] = useState("");
 
   const onRegister = () => {
+    
     console.log(email.email);
     console.log(password.password);
 
@@ -33,35 +34,23 @@ const App = ({ navigation }) => {
         Alert.alert(
           "you can't register",
           "Please lengthen this text to 6 characters",
-          [
-            {
-              text: "Cancel",
-              onPress: () => console.log("Cancel Pressed"),
-              style: "cancel",
-            },
-            { text: "OK", onPress: () => console.log("OK Pressed") },
-          ],
-          { cancelable: false }
+          
+          
         );
       } 
         else if (password.password != confirmPassword.confirmPassword) {
         Alert.alert(
           "you can't register",
-          "My Alert Msg",
-          [
-            {
-              text: "Cancel",
-              onPress: () => console.log("Cancel Pressed"),
-              style: "cancel",
-            },
-            { text: "OK", onPress: () => console.log("OK Pressed") },
-          ],
-          { cancelable: false }
+          "password does not match",
+          
         );
       } else {
         firebase
           .auth()
-          .createUserWithEmailAndPassword(email.email, password.password);
+          .createUserWithEmailAndPassword( email.email, password.password);
+          
+          navigation.navigate("Login")
+          console.log("success");
       }
     } catch (error) {
       console.log(error.toString());
@@ -74,7 +63,12 @@ const App = ({ navigation }) => {
 
     
   };
-
+  const [loaded] = useFonts({
+    Montserrat: require("../assets/static/Medium.ttf"),
+  });
+  if (!loaded) {
+    return null;
+  }
   
   return (
     <ImageBackground
@@ -88,8 +82,9 @@ const App = ({ navigation }) => {
     >
       <View style={styles.container}>
         <View style={styles.loginText3}>
-          <Text style={styles.Textsigup}>Register</Text>
+          <Text style={styles.Textsigup}>SINGUP</Text>
         </View>
+        
         <View style={styles.loginText2}>
           <Text style={styles.Textemail}>Email</Text>
         </View>
@@ -161,4 +156,4 @@ const App = ({ navigation }) => {
     </ImageBackground>
   );
 };
-export default App;
+export default Register;
