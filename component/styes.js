@@ -33,8 +33,9 @@ const styles = StyleSheet.create({
   ContainerVocabularyWord: {
     flex: 1,
     alignItems: "center",
+    //marginTop: 10,
     justifyContent: "center",
-    paddingTop: StatusBar.currentHeight,
+    //paddingTop: StatusBar.currentHeight,
   },
   ContainerQuestion: {
     flex: 0.93,
@@ -278,7 +279,9 @@ const styles = StyleSheet.create({
     fontFamily: "Montserrat",
   },
   WordVocabulary: {
-    marginTop: -1,
+    marginTop: 10,
+    paddingTop:-10,
+    marginBottom:-65,
     //borderBottomWidth:1,
     //paddingBottom:35,
   },
@@ -369,7 +372,7 @@ const styles = StyleSheet.create({
   inputIconWord: {
     position: "absolute",
     top: 15,
-    left: 320,
+    left: 300,
   },
   inputIcon1: {
     //position: "absolute",
