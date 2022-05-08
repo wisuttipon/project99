@@ -22,13 +22,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     
     justifyContent: "center",
-    top: -30,
+    top: -15,
   },
   ContainerVocabulary: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    paddingTop: StatusBar.currentHeight,
+    //paddingTop: StatusBar.currentHeight,
   },
   ContainerVocabularyWord: {
     flex: 1,
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     borderColor: "#FFA07A",
     backgroundColor: "#FFA07A",
     marginLeft: 20,
-    top: 30,
+    top: 20,
   },
   QuestionLogo1: {
     borderRadius: 500,
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     borderColor: "#EE82EE",
     backgroundColor: "#EE82EE",
     marginLeft: 20,
-    top: 30,
+    top: 20,
   },
   QuestionLogo2: {
     borderRadius: 500,
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     borderColor: "#FFA500",
     backgroundColor: "#FFA500",
     marginLeft: 20,
-    top: 30,
+    top: 20,
   },
   PicVocab: {
     //borderRadius:500,
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
     textAlign: "left",
     fontWeight: "bold",
     fontSize: 32,
-    top: -80,
+    top: -90,
     paddingLeft: 170,
     fontFamily: "Montserrat",
   },
@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
     textAlign: "left",
     fontWeight: "bold",
     fontSize: 21,
-    top: -80,
+    top: -90,
     paddingLeft: 190,
   },
   TextQuestion3: {
@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
     textAlign: "left",
     fontWeight: "bold",
     fontSize: 21,
-    top: 40,
+    top: 55,
     
     paddingLeft: 10,
   },
@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
   },
   ButtonQuestion: {
     width: windowWidth - 40,
-    height: 204,
+    height: 180,
     marginTop: 75,
 
     backgroundColor: "#FA8072",
@@ -197,7 +197,7 @@ const styles = StyleSheet.create({
   },
   ButtonQuestion1: {
     width: windowWidth - 40,
-    height: 204,
+    height: 180,
     //marginTop:75,
 
     backgroundColor: "#FF66CC",
@@ -207,7 +207,7 @@ const styles = StyleSheet.create({
   },
   ButtonQuestion2: {
     width: windowWidth - 40,
-    height: 204,
+    height: 180,
     //marginTop:75,
 
     backgroundColor: "#FF8C00",

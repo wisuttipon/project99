@@ -7,7 +7,7 @@ import {
   QuestionLv1Screen,
   QuestionLv2Screen,
   QuestionLv3Screen,
-} from "./QuestionScreen/Question1";
+} from "./QuestionScreen/QuestionMain";
 import {
   VocabularyScreen,
   VocabularyWord,
