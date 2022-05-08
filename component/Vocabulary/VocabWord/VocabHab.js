@@ -72,7 +72,7 @@ const VocabularyWord1 = ({ navigation }) => {
                     style={styles.inputIconWord}
                   />
                   <Text style={styles.TextGroup}>{data.en} </Text>
-                  <Text style={styles.TextGroup1}>{data.eh}</Text>
+                  <Text style={styles.TextGroup1}>{data.th}</Text>
                 </TouchableOpacity>
               </View>
             );
