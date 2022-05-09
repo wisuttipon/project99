@@ -15,6 +15,11 @@ import {
   VocabularyWord2,
   VocabularyWord3,
   VocabularyWord4,
+  VocabularyWord5,
+  VocabularyWord6,
+  VocabularyWord7,
+  VocabularyWord8,
+  VocabularyWord9,
 } from "./Vocabulary/VocabularyGroup";
 import * as firebase from "firebase";
 import { NavigationContainer } from "@react-navigation/native";
@@ -205,6 +210,7 @@ const Home = ({ navigation }) => {
             ),
           }}
         />
+        
         <Stack.Screen
           name="Foods"
           component={VocabularyWord3}
@@ -229,7 +235,150 @@ const Home = ({ navigation }) => {
             ),
           }}
         />
-        
+        <Stack.Screen
+          name="Music"
+          component={VocabularyWord4}
+          options={{
+            title: "Music",
+            headerStyle: {
+              backgroundColor: "#439de4",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+            headerRight: () => (
+              <TouchableOpacity onPress={onLogout}>
+                <SimpleLineIcons
+                  name="logout"
+                  size={24}
+                  color="#fff"
+                  style={styles.inputIcon1}
+                />
+              </TouchableOpacity>
+            ),
+          }}
+        />
+        <Stack.Screen
+          name="Library"
+          component={VocabularyWord5}
+          options={{
+            title: "Library",
+            headerStyle: {
+              backgroundColor: "#439de4",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+            headerRight: () => (
+              <TouchableOpacity onPress={onLogout}>
+                <SimpleLineIcons
+                  name="logout"
+                  size={24}
+                  color="#fff"
+                  style={styles.inputIcon1}
+                />
+              </TouchableOpacity>
+            ),
+          }}
+        />
+        <Stack.Screen
+          name="Zoo"
+          component={VocabularyWord6}
+          options={{
+            title: "Zoo",
+            headerStyle: {
+              backgroundColor: "#439de4",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+            headerRight: () => (
+              <TouchableOpacity onPress={onLogout}>
+                <SimpleLineIcons
+                  name="logout"
+                  size={24}
+                  color="#fff"
+                  style={styles.inputIcon1}
+                />
+              </TouchableOpacity>
+            ),
+          }}
+        />
+        <Stack.Screen
+          name="Sports"
+          component={VocabularyWord7}
+          options={{
+            title: "Sports",
+            headerStyle: {
+              backgroundColor: "#439de4",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+            headerRight: () => (
+              <TouchableOpacity onPress={onLogout}>
+                <SimpleLineIcons
+                  name="logout"
+                  size={24}
+                  color="#fff"
+                  style={styles.inputIcon1}
+                />
+              </TouchableOpacity>
+            ),
+          }}
+        />
+         <Stack.Screen
+          name="Occupation"
+          component={VocabularyWord8}
+          options={{
+            title: "Occupation",
+            headerStyle: {
+              backgroundColor: "#439de4",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+            headerRight: () => (
+              <TouchableOpacity onPress={onLogout}>
+                <SimpleLineIcons
+                  name="logout"
+                  size={24}
+                  color="#fff"
+                  style={styles.inputIcon1}
+                />
+              </TouchableOpacity>
+            ),
+          }}
+        />
+         <Stack.Screen
+          name="Vegetables"
+          component={VocabularyWord9}
+          options={{
+            title: "Vegetables",
+            headerStyle: {
+              backgroundColor: "#439de4",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+            headerRight: () => (
+              <TouchableOpacity onPress={onLogout}>
+                <SimpleLineIcons
+                  name="logout"
+                  size={24}
+                  color="#fff"
+                  style={styles.inputIcon1}
+                />
+              </TouchableOpacity>
+            ),
+          }}
+        />
         
         <Stack.Screen
           name="Conversation"

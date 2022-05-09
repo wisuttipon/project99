@@ -7,7 +7,7 @@ import * as firebase from "firebase";
 import { AntDesign } from "@expo/vector-icons";
 const Stack = createStackNavigator();
 
-const VocabularyWord4 = ({ navigation }) => {
+const VocabularyWord8 = ({ navigation }) => {
   async function playSound() { 
     const sound = new Audio.Sound();
     try {
@@ -33,7 +33,7 @@ const VocabularyWord4 = ({ navigation }) => {
     const item = [];
     firebase
       .firestore()
-      .collection("Musical")
+      .collection("Occupations")
       .onSnapshot((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           const { en, th, img } = doc.data();
@@ -83,4 +83,4 @@ const VocabularyWord4 = ({ navigation }) => {
   );
 };
 
-export { VocabularyWord4 };
+export { VocabularyWord8 };

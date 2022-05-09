@@ -6,6 +6,11 @@ import { VocabularyWord1 } from "./VocabWord/VocabHab";
 import { VocabularyWord2 } from "./VocabWord/VocabSchool";
 import { VocabularyWord3 } from "./VocabWord/VocabFoods";
 import { VocabularyWord4 } from "./VocabWord/vocabMusic";
+import { VocabularyWord5 } from "./VocabWord/VocabLibrary";
+import { VocabularyWord6 } from "./VocabWord/VocabZoo";
+import { VocabularyWord7 } from "./VocabWord/VocabSports";
+import { VocabularyWord8 } from "./VocabWord/VocabOccupation";
+import { VocabularyWord9 } from "./VocabWord/VocabVegetables";
 import { createStackNavigator } from "@react-navigation/stack";
 import VocabBody from "../../assets/VocabularyPicture/b11.png";
 import VocabBody1 from "../../assets/VocabularyPicture/b12.jpg";
@@ -15,6 +20,8 @@ import VocabBody4 from "../../assets/VocabularyPicture/b15.png";
 import VocabBody5 from "../../assets/VocabularyPicture/b16.png";
 import VocabBody6 from "../../assets/VocabularyPicture/b17.png";
 import VocabBody7 from "../../assets/VocabularyPicture/b18.jpg";
+import VocabBody8 from "../../assets/VocabularyPicture/b19.png";
+import VocabBody9 from "../../assets/VocabularyPicture/b20.png";
 import { useFonts } from "expo-font";
 const Stack = createStackNavigator();
 
@@ -73,7 +80,7 @@ const VocabularyScreen = ({ navigation }) => {
           </View>
           <View style={styles.BodyVocabulary}>
             <TouchableOpacity
-              onPress={() => navigation.navigate("Foods")}
+              onPress={() => navigation.navigate("Music")}
               style={styles.ButtonVocabulary}
             >
               <Image style={styles.tinyLogo} source={VocabBody4} />
@@ -83,7 +90,7 @@ const VocabularyScreen = ({ navigation }) => {
           </View>
           <View style={styles.BodyVocabulary}>
             <TouchableOpacity
-              onPress={() => navigation.navigate("Foods")}
+              onPress={() => navigation.navigate("Library")}
               style={styles.ButtonVocabulary}
             >
               <Image style={styles.tinyLogo} source={VocabBody5} />
@@ -93,7 +100,7 @@ const VocabularyScreen = ({ navigation }) => {
           </View>
           <View style={styles.BodyVocabulary}>
             <TouchableOpacity
-              onPress={() => navigation.navigate("Foods")}
+              onPress={() => navigation.navigate("Zoo")}
               style={styles.ButtonVocabulary}
             >
               <Image style={styles.tinyLogo} source={VocabBody6} />
@@ -103,7 +110,7 @@ const VocabularyScreen = ({ navigation }) => {
           </View>
           <View style={styles.BodyVocabulary}>
             <TouchableOpacity
-              onPress={() => navigation.navigate("Foods")}
+              onPress={() => navigation.navigate("Sports")}
               style={styles.ButtonVocabulary}
             >
               <Image style={styles.tinyLogo} source={VocabBody7} />
@@ -113,22 +120,22 @@ const VocabularyScreen = ({ navigation }) => {
           </View>
           <View style={styles.BodyVocabulary}>
             <TouchableOpacity
-              onPress={() => navigation.navigate("Foods")}
+              onPress={() => navigation.navigate("Occupation")}
               style={styles.ButtonVocabulary}
             >
-              <Image style={styles.tinyLogo} source={VocabBody6} />
-              <Text style={styles.TextBody}>Zoo</Text>
-              <Text style={styles.TextBody1}>สวนสัตว์</Text>
+              <Image style={styles.tinyLogo} source={VocabBody8} />
+              <Text style={styles.TextBody}>Occupation</Text>
+              <Text style={styles.TextBody1}>อาชีพ</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.BodyVocabulary}>
             <TouchableOpacity
-              onPress={() => navigation.navigate("Foods")}
+              onPress={() => navigation.navigate("Vegetables")}
               style={styles.ButtonVocabulary}
             >
-              <Image style={styles.tinyLogo} source={VocabBody7} />
-              <Text style={styles.TextBody}>Sports</Text>
-              <Text style={styles.TextBody1}>กีฬา</Text>
+              <Image style={styles.tinyLogo} source={VocabBody9} />
+              <Text style={styles.TextBody}>Vegetables</Text>
+              <Text style={styles.TextBody1}>พืชผัก</Text>
             </TouchableOpacity>
           </View>
          
@@ -148,3 +155,8 @@ export { VocabularyWord1 };
 export { VocabularyWord2 };
 export { VocabularyWord3 };
 export { VocabularyWord4 };
+export { VocabularyWord5 };
+export { VocabularyWord6 };
+export { VocabularyWord7 };
+export { VocabularyWord8 };
+export { VocabularyWord9 };
