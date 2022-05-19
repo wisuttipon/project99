@@ -6,30 +6,25 @@ import { useFonts } from "expo-font";
 import { AntDesign } from "@expo/vector-icons";
 import * as firebase from "firebase";
 import { Audio } from "expo-av";
+
 const Stack = createStackNavigator();
 
 const VocabularyWord = ({ navigation }) => {
- 
 
-  async function playSound() { 
-    const sound = new Audio.Sound();
-    try {
-      await sound.createAsync({uri:'https://firebasestorage.googleapis.com/v0/b/projectx-781a7.appspot.com/o/Ear.mp3?alt=media&token=1b140092-025c-4398-bf78-19c7a97865cc'}
-      ,{shouldPlay:true});
+  const [sound, setSound] = React.useState();
+
+  async function playSound(url) {
+      const { sound } = await Audio.Sound.createAsync({uri: url});
+      setSound(sound);
       await sound.playAsync();
-      // Your sound is playing!
-      console.log("Soundpp");
-      // Don't forget to unload the sound from memory
-      // when you are done using the Sound object
-      await sound.unloadAsync();
-    } catch (error) {
-      console.log(error);
-      // An error occurred!
-    }
-    //console.log("Loading Sound");
-    
-    
   }
+
+  React.useEffect(() => {
+    return sound
+      ? () => {
+          sound.unloadAsync(); }
+      : undefined;
+  }, [sound]);
 
   const [Vocab, Setvocab] = useState([]);
   useEffect(() => {
@@ -39,12 +34,12 @@ const VocabularyWord = ({ navigation }) => {
       .collection("Body")
       .onSnapshot((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-          const { EN, Th, img } = doc.data();
+          const { EN, Th, url } = doc.data();
           item.push({
             key: doc.id,
             EN,
             Th,
-            img,
+            url,
           });
         });
         Setvocab(item);
@@ -65,7 +60,7 @@ const VocabularyWord = ({ navigation }) => {
             return (
               <View key={i} style={styles.WordVocabulary}>
                 <TouchableOpacity
-                  onPress={() => playSound()}
+                  onPress={() => playSound(data.url)}
                   style={styles.ButtonVocabularyWord}
                 >
                   <AntDesign

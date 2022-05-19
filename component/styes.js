@@ -372,7 +372,7 @@ const styles = StyleSheet.create({
   inputIconWord: {
     position: "absolute",
     top: 15,
-    left: 300,
+    right: 10,
   },
   inputIcon1: {
     //position: "absolute",
@@ -453,6 +453,92 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     marginHorizontal: 16,
+  },
+  conversationTextBox: {
+    backgroundColor: '#439de4', 
+    width: '70%', 
+    marginVertical: 10, 
+    borderWidth: 1, 
+    borderRadius: 15, 
+    borderColor: 'black',
+  },
+  conversationText: {
+    color: '#ffffff',
+    width: '80%'
+  },
+  conversationIconSound: {
+    width: 'auto',
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  conversationImage: {
+    width: 90,
+    height: 90
+  },
+  conversationView: {
+    flexDirection: "row",
+    padding: 10,
+  },
+  conversationDescriptionBox: {
+    borderWidth: 1, 
+    borderRadius: 15, 
+    borderColor: '#439de4',
+    padding: 20,
+    margin: 20
+  },
+  questionView: {
+    width: '100%',
+    padding: 20,
+    alignItems: 'flex-start' 
+  },
+  questionViewHeader: {
+    paddingTop: 20,
+    paddingHorizontal: 20,
+    alignItems: 'flex-start' 
+  },
+  questionTextQuestion: {
+    padding: 10
+  },
+  questionTextQuestion2: {
+    paddingHorizontal: 10
+  },
+  questionSubmit: {
+    width: '100%',
+    paddingVertical: 15,
+    backgroundColor: "#439de4",
+    borderRadius: 10,
+    borderWidth: 1,
+    borderRadius: 25,
+    borderColor: "#fff",
+  },
+  questionPlaySound: {
+    flexDirection: "row",
+    borderWidth: 1, 
+    borderRadius: 15, 
+    borderColor: '#439de4',
+    paddingHorizontal: 10,
+    alignItems: "center",
+    justifyContent: "center",
+    width: '100%',
+  },
+  questionIconSound: {
+    width: 'auto',
+    alignItems: "center",
+    justifyContent: "center",
+    margin: 10,
+  },
+  questionPlaySoundText: {
+    fontWeight: 'bold',
+    textAlignVertical: 'center',
+    paddingVertical: 25
+  },
+  HistoryBox: {
+    borderWidth: 1, 
+    borderRadius: 15, 
+    borderColor: '#439de4',
+    padding: 20,
+    marginVertical: 10,
+    marginHorizontal: 20
   },
 });
 export default styles;

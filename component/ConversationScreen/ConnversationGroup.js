@@ -1,17 +1,10 @@
 import React from "react";
 import { TouchableOpacity, Text, View, Image, ScrollView } from "react-native";
 import styles from "../styes";
-//import { VocabularyWord } from "./VocabWord/VocabBody";
 import { createStackNavigator } from "@react-navigation/stack";
 import VocabChat from "../../assets/Conversation/chat.png";
-import VocabBody1 from "../../assets/VocabularyPicture/b12.jpg";
-import VocabBody2 from "../../assets/VocabularyPicture/b13.png";
-import VocabBody3 from "../../assets/VocabularyPicture/b14.png";
-import VocabBody4 from "../../assets/VocabularyPicture/b15.png";
-import VocabBody5 from "../../assets/VocabularyPicture/b16.png";
-import VocabBody6 from "../../assets/VocabularyPicture/b17.png";
-import VocabBody7 from "../../assets/VocabularyPicture/b18.jpg";
 import { useFonts } from "expo-font";
+
 const Stack = createStackNavigator();
 
 const ConversationScreen = ({ navigation }) => {
@@ -28,7 +21,7 @@ const ConversationScreen = ({ navigation }) => {
         <View>
           <View style={styles.BodyVocabulary}>
             <TouchableOpacity
-               onPress={() => navigation.navigate("Body")}
+              onPress={() => navigation.navigate("conversation1")}
               style={styles.ButtonVocabulary}
             >
               <Image style={styles.ConLogo} source={VocabChat} />
@@ -39,7 +32,7 @@ const ConversationScreen = ({ navigation }) => {
 
           <View style={styles.BodyVocabulary}>
             <TouchableOpacity
-               onPress={() => navigation.navigate("Habitation")}
+               onPress={() => navigation.navigate("conversation2")}
               style={styles.ButtonVocabulary}
             >
               <Image style={styles.ConLogo} source={VocabChat} />
@@ -49,7 +42,7 @@ const ConversationScreen = ({ navigation }) => {
           </View>
           <View style={styles.BodyVocabulary}>
             <TouchableOpacity
-               onPress={() => navigation.navigate("School")}
+               onPress={() => navigation.navigate("conversation3")}
               style={styles.ButtonVocabulary}
             >
               <Image style={styles.ConLogo} source={VocabChat} />
@@ -59,7 +52,7 @@ const ConversationScreen = ({ navigation }) => {
           </View>
           <View style={styles.BodyVocabulary}>
             <TouchableOpacity
-              onPress={() => navigation.goBack()}
+              onPress={() => navigation.navigate("conversation4")}
               style={styles.ButtonVocabulary}
             >
               <Image style={styles.ConLogo} source={VocabChat} />
@@ -69,7 +62,7 @@ const ConversationScreen = ({ navigation }) => {
           </View>
           <View style={styles.BodyVocabulary}>
             <TouchableOpacity
-              onPress={() => navigation.goBack()}
+              onPress={() => navigation.navigate("conversation5")}
               style={styles.ButtonVocabulary}
             >
               <Image style={styles.ConLogo} source={VocabChat} />
@@ -79,7 +72,7 @@ const ConversationScreen = ({ navigation }) => {
           </View>
           <View style={styles.BodyVocabulary}>
             <TouchableOpacity
-              onPress={() => navigation.goBack()}
+              onPress={() => navigation.navigate("conversation6")}
               style={styles.ButtonVocabulary}
             >
               <Image style={styles.ConLogo} source={VocabChat} />
@@ -89,7 +82,7 @@ const ConversationScreen = ({ navigation }) => {
           </View>
           <View style={styles.BodyVocabulary}>
             <TouchableOpacity
-              onPress={() => navigation.goBack()}
+              onPress={() => navigation.navigate("conversation7")}
               style={styles.ButtonVocabulary}
             >
               <Image style={styles.ConLogo} source={VocabChat} />
@@ -99,7 +92,7 @@ const ConversationScreen = ({ navigation }) => {
           </View>
           <View style={styles.BodyVocabulary}>
             <TouchableOpacity
-              onPress={() => navigation.goBack()}
+              onPress={() => navigation.navigate("conversation8")}
               style={styles.ButtonVocabulary}
             >
               <Image style={styles.ConLogo} source={VocabChat} />
@@ -109,7 +102,7 @@ const ConversationScreen = ({ navigation }) => {
           </View>
           <View style={styles.BodyVocabulary}>
             <TouchableOpacity
-              onPress={() => navigation.goBack()}
+              onPress={() => navigation.navigate("conversation9")}
               style={styles.ButtonVocabulary}
             >
               <Image style={styles.ConLogo} source={VocabChat} />
@@ -119,7 +112,7 @@ const ConversationScreen = ({ navigation }) => {
           </View>
           <View style={styles.BodyVocabulary}>
             <TouchableOpacity
-              onPress={() => navigation.goBack()}
+              onPress={() => navigation.navigate("conversation10")}
               style={styles.ButtonVocabulary}
             >
               <Image style={styles.ConLogo} source={VocabChat} />

@@ -6088,7 +6088,7 @@ lodash.frompairs@^4.0.1:
   resolved "https://registry.yarnpkg.com/lodash.frompairs/-/lodash.frompairs-4.0.1.tgz#bc4e5207fa2757c136e573614e9664506b2b1bd2"
   integrity sha1-vE5SB/onV8E25XNhTpZkUGsrG9I=
 
-lodash.isequal@^4.5.0:
+lodash.isequal@4.5.0, lodash.isequal@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.isequal/-/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
   integrity sha1-QVxEePK8wwEgwizhDtMib30+GOA=
@@ -7413,6 +7413,13 @@ react-native-parsed-text@0.0.22:
   integrity sha512-hfD83RDXZf9Fvth3DowR7j65fMnlqM9PpxZBGWkzVcUTFtqe6/yPcIoIAgrJbKn6YmtzkivmhWE2MCE4JKBXrQ==
   dependencies:
     prop-types "^15.7.x"
+
+react-native-radio-buttons-group@^2.2.10:
+  version "2.2.10"
+  resolved "https://registry.yarnpkg.com/react-native-radio-buttons-group/-/react-native-radio-buttons-group-2.2.10.tgz#619f63ee4d9207fe91b784d74e982bb70d45771a"
+  integrity sha512-ZJfpz0FBjY7DP6elWf/6WlG1wDZUMQX8kXkPeMo90+R273d4TI/JjKEd6FOqOY0c7++EWsPr660u61z39lKP5w==
+  dependencies:
+    lodash.isequal "4.5.0"
 
 react-native-reanimated@~2.2.0:
   version "2.2.0"
