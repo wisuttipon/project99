@@ -25,7 +25,7 @@ const ConversationScreen = ({ navigation }) => {
               style={styles.ButtonVocabulary}
             >
               <Image style={styles.ConLogo} source={VocabChat} />
-              <Text style={styles.TextCon}>Conversation 1</Text>
+              <Text style={styles.TextCon}>Movie Conversation</Text>
               
             </TouchableOpacity>
           </View>
@@ -36,7 +36,7 @@ const ConversationScreen = ({ navigation }) => {
               style={styles.ButtonVocabulary}
             >
               <Image style={styles.ConLogo} source={VocabChat} />
-              <Text style={styles.TextCon}>Conversation 2</Text>
+              <Text style={styles.TextCon}>Museum Conversation </Text>
               
             </TouchableOpacity>
           </View>
@@ -46,7 +46,7 @@ const ConversationScreen = ({ navigation }) => {
               style={styles.ButtonVocabulary}
             >
               <Image style={styles.ConLogo} source={VocabChat} />
-              <Text style={styles.TextCon}>Conversation 3</Text>
+              <Text style={styles.TextCon}>Concert Conversation </Text>
               
             </TouchableOpacity>
           </View>
@@ -56,7 +56,7 @@ const ConversationScreen = ({ navigation }) => {
               style={styles.ButtonVocabulary}
             >
               <Image style={styles.ConLogo} source={VocabChat} />
-              <Text style={styles.TextCon}>Conversation 4</Text>
+              <Text style={styles.TextCon}>Book Conversation</Text>
              
             </TouchableOpacity>
           </View>
@@ -66,7 +66,7 @@ const ConversationScreen = ({ navigation }) => {
               style={styles.ButtonVocabulary}
             >
               <Image style={styles.ConLogo} source={VocabChat} />
-              <Text style={styles.TextCon}>Conversation 5</Text>
+              <Text style={styles.TextCon}>School Conversation</Text>
               
             </TouchableOpacity>
           </View>
@@ -76,7 +76,7 @@ const ConversationScreen = ({ navigation }) => {
               style={styles.ButtonVocabulary}
             >
               <Image style={styles.ConLogo} source={VocabChat} />
-              <Text style={styles.TextCon}>Conversation 6</Text>
+              <Text style={styles.TextCon}>Sick Conversation</Text>
               
             </TouchableOpacity>
           </View>
@@ -86,7 +86,7 @@ const ConversationScreen = ({ navigation }) => {
               style={styles.ButtonVocabulary}
             >
               <Image style={styles.ConLogo} source={VocabChat} />
-              <Text style={styles.TextCon}>Conversation 7</Text>
+              <Text style={styles.TextCon}>Test Conversation</Text>
              
             </TouchableOpacity>
           </View>
@@ -96,7 +96,7 @@ const ConversationScreen = ({ navigation }) => {
               style={styles.ButtonVocabulary}
             >
               <Image style={styles.ConLogo} source={VocabChat} />
-              <Text style={styles.TextCon}>Conversation 8</Text>
+              <Text style={styles.TextCon}>Study Conversation</Text>
               
             </TouchableOpacity>
           </View>
@@ -106,7 +106,7 @@ const ConversationScreen = ({ navigation }) => {
               style={styles.ButtonVocabulary}
             >
               <Image style={styles.ConLogo} source={VocabChat} />
-              <Text style={styles.TextCon}>Conversation 9</Text>
+              <Text style={styles.TextCon}>Telephone call Conversation</Text>
               
             </TouchableOpacity>
           </View>
@@ -116,7 +116,7 @@ const ConversationScreen = ({ navigation }) => {
               style={styles.ButtonVocabulary}
             >
               <Image style={styles.ConLogo} source={VocabChat} />
-              <Text style={styles.TextCon}>Conversation 10</Text>
+              <Text style={styles.TextCon}>Reading book Conversation</Text>
               
             </TouchableOpacity>
           </View>

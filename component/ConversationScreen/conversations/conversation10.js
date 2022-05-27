@@ -37,10 +37,10 @@ const Conversation10 = ({ navigation }) => {
         <View style={styles.conversationView}>
           <Image style={styles.conversationImage} source={imageMan} />
           <TouchableOpacity 
-            onPress={() => playSound('https://firebasestorage.googleapis.com/v0/b/projectx-781a7.appspot.com/o/ConversationData%20%E0%B8%A3%E0%B8%A7%E0%B8%A1%2FM10.mp3?alt=media&token=1ce3d563-d679-4abb-8779-c5f27076af2e')}
+            onPress={() => playSound('https://firebasestorage.googleapis.com/v0/b/projectx-781a7.appspot.com/o/ConversationData%20%E0%B8%A3%E0%B8%A7%E0%B8%A1%2FM10-1.mp3?alt=media&token=2fca1afb-1662-4a46-b96d-8f3890d33087')}
             style={styles.conversationTextBox}>
             <View style={styles.conversationView}>
-              <Text style={styles.conversationText}>I'm looking to buy a hat for my cousin, but I can't seem to find his size. Would you happen to have any in the back?</Text>
+              <Text style={styles.conversationText}>I heard from your roommate that you were up late last night.</Text>
               <AntDesign
                     name="sound"
                     size={48}
@@ -53,10 +53,43 @@ const Conversation10 = ({ navigation }) => {
         <View style={styles.conversationView}>
           <Image style={styles.conversationImage} source={imageWoman} />
           <TouchableOpacity 
-            onPress={() => playSound('https://firebasestorage.googleapis.com/v0/b/projectx-781a7.appspot.com/o/ConversationData%20%E0%B8%A3%E0%B8%A7%E0%B8%A1%2FWM10.mp3?alt=media&token=109e30e0-aeeb-44b2-9be6-8100f3731d2f')}
+            onPress={() => playSound('https://firebasestorage.googleapis.com/v0/b/projectx-781a7.appspot.com/o/ConversationData%20%E0%B8%A3%E0%B8%A7%E0%B8%A1%2FWM10-1.mp3?alt=media&token=e2788049-ac41-4b05-b4ae-b0f29ee19893')}
             style={styles.conversationTextBox}>
             <View style={styles.conversationView}>
-              <Text style={styles.conversationText}>I'm sorry, but these are the only ones we have in stock. But if you leave your phone number, we'll contact you when a new shipment comes in.</Text>
+              <Text style={styles.conversationText}>Yeah, I had a big history final to prepare for.</Text>
+              <AntDesign
+                    name="sound"
+                    size={48}
+                    color="black"
+                    style={styles.conversationIconSound}
+                  />
+            </View>
+          </TouchableOpacity>
+        </View>
+       
+        <View style={styles.conversationView}>
+          <Image style={styles.conversationImage} source={imageMan} />
+          <TouchableOpacity 
+            onPress={() => playSound('https://firebasestorage.googleapis.com/v0/b/projectx-781a7.appspot.com/o/ConversationData%20%E0%B8%A3%E0%B8%A7%E0%B8%A1%2FM10-2.mp3?alt=media&token=6bad2412-1858-47e6-9386-afbdc9b78205')}
+            style={styles.conversationTextBox}>
+            <View style={styles.conversationView}>
+              <Text style={styles.conversationText}>How did you do?</Text>
+              <AntDesign
+                    name="sound"
+                    size={48}
+                    color="black"
+                    style={styles.conversationIconSound}
+                  />
+            </View>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.conversationView}>
+          <Image style={styles.conversationImage} source={imageWoman} />
+          <TouchableOpacity 
+            onPress={() => playSound('https://firebasestorage.googleapis.com/v0/b/projectx-781a7.appspot.com/o/ConversationData%20%E0%B8%A3%E0%B8%A7%E0%B8%A1%2FWM10-2.mp3?alt=media&token=b9bdaacc-02ec-4530-a8d7-0328d1c7e81f')}
+            style={styles.conversationTextBox}>
+            <View style={styles.conversationView}>
+              <Text style={styles.conversationText}>I actually did better than I thought I would.</Text>
               <AntDesign
                     name="sound"
                     size={48}
@@ -67,7 +100,9 @@ const Conversation10 = ({ navigation }) => {
           </TouchableOpacity>
         </View>
         <View style={styles.conversationDescriptionBox}>
-          <Text>จากการสนทนาซึ่งแสดงให้เห็นว่าถ้าหากผู้ชายเขียนหมายเลขโทรศัพท์ให้ผู้หญิงไว้เขาจะติดต่อกลับไป และจาก คำถามที่ว่าผู้หญิงจะทำอะไรต่อไป คำตอบคือ D จะเขียนหมายเลขโทรศัพท์ของผู้ชายเอาไว้
+          <Text>จากการสนทนาระหว่างผู้ชายและผู้หญิงเห็นได้ว่าเป็นการคุยเกี่ยวกับการอ่านหนังสือสอบของผู้หญิง จนกระทั่งสอบวิชาประวัติศาสตร์ และสอบได้ดีกว่าที่หล่อนคิดไว้ 
+
+ 
 </Text>
         </View>
       </ScrollView>

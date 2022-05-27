@@ -232,7 +232,7 @@ const styles = StyleSheet.create({
     fontSize: 27,
     paddingRight: 10,
     fontFamily: "Montserrat",
-    top: -45,
+    top: -65,
   },
   TextBody: {
     color: "#000",

@@ -1,7 +1,7 @@
 import React from "react";
 import Login from "./component/Login";
 import Loading from "./component/Loading";
-import Register from "./component/register"
+import Register from "./component/Register"
 import Home from "./component/Home";
 import { View, Text, ActivityIndicator, StyleSheet } from "react-native";
 import * as firebase from "firebase";

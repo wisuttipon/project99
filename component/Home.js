@@ -687,7 +687,7 @@ const Home = ({ navigation }) => {
           name="QuestionLv1"
           component={QuestionLv1Screen}
           options={{
-            title: "QuestionLv1",
+            title: "Question 1",
             headerStyle: {
               backgroundColor: "#439de4",
             },
@@ -711,7 +711,7 @@ const Home = ({ navigation }) => {
           name="QuestionLv2"
           component={QuestionLv2Screen}
           options={{
-            title: "QuestionLv2",
+            title: "Question 2",
             headerStyle: {
               backgroundColor: "#439de4",
             },
@@ -735,7 +735,7 @@ const Home = ({ navigation }) => {
           name="QuestionLv3"
           component={QuestionLv3Screen}
           options={{
-            title: "QuestionLv3",
+            title: "Question 3",
             headerStyle: {
               backgroundColor: "#439de4",
             },
