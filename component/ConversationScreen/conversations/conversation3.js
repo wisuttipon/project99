@@ -7,6 +7,7 @@ import imageMan from './../../../assets/Conversation/young-man.png'
 import imageWoman from './../../../assets/Conversation/woman.png'
 import { AntDesign } from "@expo/vector-icons";
 import { Audio } from "expo-av";
+import * as firebase from "firebase";
 
 const Stack = createStackNavigator();
 
@@ -24,6 +25,29 @@ const Conversation3 = ({ navigation }) => {
       : undefined;
   }, [sound]);
 
+  const [data, SetItems] = React.useState([]);
+  const [description, setDescription] = React.useState("");
+  React.useEffect(() => {
+    const item = [];
+    firebase
+      .firestore()
+      .collection("conversation")
+      .doc('2')
+      .onSnapshot((querySnapshot) => {
+        setDescription(querySnapshot.data().description);
+        querySnapshot.data().data.forEach((doc) => {
+          const { gender, position, sound_url, text } = doc;
+          item.push({
+            gender,
+            position,
+            sound_url,
+            text,
+          });
+        });
+        SetItems(item);
+      });
+  }, []);
+
   const [loaded] = useFonts({
     Montserrat: require("../../../assets/static/Medium.ttf"),
   });
@@ -34,40 +58,28 @@ const Conversation3 = ({ navigation }) => {
   return (
     <View style={styles.ContainerVocabularyWord}>
       <ScrollView style={styles.scrollView}>
-        <View style={styles.conversationView}>
-          <Image style={styles.conversationImage} source={imageMan} />
-          <TouchableOpacity 
-            onPress={() => playSound('https://firebasestorage.googleapis.com/v0/b/projectx-781a7.appspot.com/o/ConversationData%20%E0%B8%A3%E0%B8%A7%E0%B8%A1%2FM3.mp3?alt=media&token=495d8073-a171-49dd-b5a9-df44ecd445fa')}
-            style={styles.conversationTextBox}>
-            <View style={styles.conversationView}>
-              <Text style={styles.conversationText}>How about going to a concert tonight?</Text>
-              <AntDesign
-                    name="sound"
-                    size={48}
-                    color="black"
-                    style={styles.conversationIconSound}
-                  />
+        {data.map((res, i) => {
+          return(
+            <View key={i} style={styles.conversationView}>
+              <Image style={styles.conversationImage} source={res.gender === 'man' ? imageMan : imageWoman} />
+              <TouchableOpacity 
+                onPress={() => playSound(res.sound_url)}
+                style={styles.conversationTextBox}>
+                <View style={styles.conversationView}>
+                  <Text style={styles.conversationText}>{res.text}</Text>
+                  <AntDesign
+                        name="sound"
+                        size={48}
+                        color="black"
+                        style={styles.conversationIconSound}
+                      />
+                </View>
+              </TouchableOpacity>
             </View>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.conversationView}>
-          <Image style={styles.conversationImage} source={imageWoman} />
-          <TouchableOpacity 
-            onPress={() => playSound('https://firebasestorage.googleapis.com/v0/b/projectx-781a7.appspot.com/o/ConversationData%20%E0%B8%A3%E0%B8%A7%E0%B8%A1%2FWM3.mp3?alt=media&token=87b17db8-5a04-4cad-a0ce-cbd0befeb2d6')}
-            style={styles.conversationTextBox}>
-            <View style={styles.conversationView}>
-              <Text style={styles.conversationText}>I've got a headache.</Text>
-              <AntDesign
-                    name="sound"
-                    size={48}
-                    color="black"
-                    style={styles.conversationIconSound}
-                  />
-            </View>
-          </TouchableOpacity>
-        </View>
+          );
+        })}
         <View style={styles.conversationDescriptionBox}>
-          <Text>จากการสนทนาจะเห็นได้ว่า ผู้ชายพยายามชวนผู้หญิงไปชมคอนเสิร์ตและผู้หญิงบอกว่า เธอปวดหัว หมายถึงปฏิเสธที่บอกว่าไม่สามารถไปได้</Text>
+          <Text>{description}</Text>
         </View>
       </ScrollView>
     </View>

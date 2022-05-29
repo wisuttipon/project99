@@ -7,6 +7,7 @@ import imageMan from './../../../assets/Conversation/young-man.png'
 import imageWoman from './../../../assets/Conversation/woman.png'
 import { AntDesign } from "@expo/vector-icons";
 import { Audio } from "expo-av";
+import * as firebase from "firebase";
 
 const Stack = createStackNavigator();
 
@@ -24,6 +25,29 @@ const Conversation5 = ({ navigation }) => {
       : undefined;
   }, [sound]);
 
+  const [data, SetItems] = React.useState([]);
+  const [description, setDescription] = React.useState("");
+  React.useEffect(() => {
+    const item = [];
+    firebase
+      .firestore()
+      .collection("conversation")
+      .doc('4')
+      .onSnapshot((querySnapshot) => {
+        setDescription(querySnapshot.data().description);
+        querySnapshot.data().data.forEach((doc) => {
+          const { gender, position, sound_url, text } = doc;
+          item.push({
+            gender,
+            position,
+            sound_url,
+            text,
+          });
+        });
+        SetItems(item);
+      });
+  }, []);
+
   const [loaded] = useFonts({
     Montserrat: require("../../../assets/static/Medium.ttf"),
   });
@@ -34,40 +58,28 @@ const Conversation5 = ({ navigation }) => {
   return (
     <View style={styles.ContainerVocabularyWord}>
       <ScrollView style={styles.scrollView}>
-        <View style={styles.conversationView}>
-          <Image style={styles.conversationImage} source={imageMan} />
-          <TouchableOpacity 
-            onPress={() => playSound('https://firebasestorage.googleapis.com/v0/b/projectx-781a7.appspot.com/o/ConversationData%20%E0%B8%A3%E0%B8%A7%E0%B8%A1%2FM5.mp3?alt=media&token=200d0257-8d3e-4b28-af78-15514cabf8c3')}
-            style={styles.conversationTextBox}>
-            <View style={styles.conversationView}>
-              <Text style={styles.conversationText}>Do you like the food in the school cafeteria?</Text>
-              <AntDesign
-                    name="sound"
-                    size={48}
-                    color="black"
-                    style={styles.conversationIconSound}
-                  />
+        {data.map((res, i) => {
+          return(
+            <View key={i} style={styles.conversationView}>
+              <Image style={styles.conversationImage} source={res.gender === 'man' ? imageMan : imageWoman} />
+              <TouchableOpacity 
+                onPress={() => playSound(res.sound_url)}
+                style={styles.conversationTextBox}>
+                <View style={styles.conversationView}>
+                  <Text style={styles.conversationText}>{res.text}</Text>
+                  <AntDesign
+                        name="sound"
+                        size={48}
+                        color="black"
+                        style={styles.conversationIconSound}
+                      />
+                </View>
+              </TouchableOpacity>
             </View>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.conversationView}>
-          <Image style={styles.conversationImage} source={imageWoman} />
-          <TouchableOpacity 
-            onPress={() => playSound('https://firebasestorage.googleapis.com/v0/b/projectx-781a7.appspot.com/o/ConversationData%20%E0%B8%A3%E0%B8%A7%E0%B8%A1%2FWM5.mp3?alt=media&token=066e8d9a-cf8e-440a-9c8f-ae300471fd9e')}
-            style={styles.conversationTextBox}>
-            <View style={styles.conversationView}>
-              <Text style={styles.conversationText}>I'm only eating here because I don't have any other options.</Text>
-              <AntDesign
-                    name="sound"
-                    size={48}
-                    color="black"
-                    style={styles.conversationIconSound}
-                  />
-            </View>
-          </TouchableOpacity>
-        </View>
+          );
+        })}
         <View style={styles.conversationDescriptionBox}>
-          <Text>จากการสนทนาจะเห็นได้ว่า การที่ผู้ชายถามว่า ชอบอาหารในโรงอาหารโรงเรียนไหม ซึ่งคำตอบของผู้หญิงจำเป็นต้องรับประทานอาหารในโรงอาหารโรงเรียนเพราะไม่มีทางเลือกอื่น</Text>
+          <Text>{description}</Text>
         </View>
       </ScrollView>
     </View>
