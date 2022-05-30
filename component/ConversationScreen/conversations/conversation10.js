@@ -7,6 +7,7 @@ import imageMan from './../../../assets/Conversation/young-man.png'
 import imageWoman from './../../../assets/Conversation/woman.png'
 import { AntDesign } from "@expo/vector-icons";
 import { Audio } from "expo-av";
+import * as firebase from "firebase";
 
 const Stack = createStackNavigator();
 
@@ -24,6 +25,29 @@ const Conversation10 = ({ navigation }) => {
       : undefined;
   }, [sound]);
 
+  const [data, SetItems] = React.useState([]);
+  const [description, setDescription] = React.useState("");
+  React.useEffect(() => {
+    const item = [];
+    firebase
+      .firestore()
+      .collection("conversation")
+      .doc('9')
+      .onSnapshot((querySnapshot) => {
+        setDescription(querySnapshot.data().description);
+        querySnapshot.data().data.forEach((doc) => {
+          const { gender, position, sound_url, text } = doc;
+          item.push({
+            gender,
+            position,
+            sound_url,
+            text,
+          });
+        });
+        SetItems(item);
+      });
+  }, []);
+
   const [loaded] = useFonts({
     Montserrat: require("../../../assets/static/Medium.ttf"),
   });
@@ -34,6 +58,7 @@ const Conversation10 = ({ navigation }) => {
   return (
     <View style={styles.ContainerVocabularyWord}>
       <ScrollView style={styles.scrollView}>
+<<<<<<< HEAD
         <View style={styles.conversationView}>
           <Image style={styles.conversationImage} source={imageMan} />
           <TouchableOpacity 
@@ -104,6 +129,30 @@ const Conversation10 = ({ navigation }) => {
 
  
 </Text>
+=======
+        {data.map((res, i) => {
+          return(
+            <View key={i} style={styles.conversationView}>
+              <Image style={styles.conversationImage} source={res.gender === 'man' ? imageMan : imageWoman} />
+              <TouchableOpacity 
+                onPress={() => playSound(res.sound_url)}
+                style={styles.conversationTextBox}>
+                <View style={styles.conversationView}>
+                  <Text style={styles.conversationText}>{res.text}</Text>
+                  <AntDesign
+                        name="sound"
+                        size={48}
+                        color="black"
+                        style={styles.conversationIconSound}
+                      />
+                </View>
+              </TouchableOpacity>
+            </View>
+          );
+        })}
+        <View style={styles.conversationDescriptionBox}>
+          <Text>{description}</Text>
+>>>>>>> 069d45fe01b45708440b3e424aaf683d4bc64296
         </View>
       </ScrollView>
     </View>

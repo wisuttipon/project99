@@ -7,6 +7,7 @@ import imageMan from './../../../assets/Conversation/young-man.png'
 import imageWoman from './../../../assets/Conversation/woman.png'
 import { AntDesign } from "@expo/vector-icons";
 import { Audio } from "expo-av";
+import * as firebase from "firebase";
 
 const Stack = createStackNavigator();
 
@@ -24,6 +25,29 @@ const Conversation2 = ({ navigation }) => {
       : undefined;
   }, [sound]);
 
+  const [data, SetItems] = React.useState([]);
+  const [description, setDescription] = React.useState("");
+  React.useEffect(() => {
+    const item = [];
+    firebase
+      .firestore()
+      .collection("conversation")
+      .doc('1')
+      .onSnapshot((querySnapshot) => {
+        setDescription(querySnapshot.data().description);
+        querySnapshot.data().data.forEach((doc) => {
+          const { gender, position, sound_url, text } = doc;
+          item.push({
+            gender,
+            position,
+            sound_url,
+            text,
+          });
+        });
+        SetItems(item);
+      });
+  }, []);
+
   const [loaded] = useFonts({
     Montserrat: require("../../../assets/static/Medium.ttf"),
   });
@@ -34,45 +58,28 @@ const Conversation2 = ({ navigation }) => {
   return (
     <View style={styles.ContainerVocabularyWord}>
       <ScrollView style={styles.scrollView}>
-        <View style={styles.conversationView}>
-          <Image style={styles.conversationImage} source={imageMan} />
-          <TouchableOpacity 
-            onPress={() => playSound('https://firebasestorage.googleapis.com/v0/b/projectx-781a7.appspot.com/o/ConversationData%20%E0%B8%A3%E0%B8%A7%E0%B8%A1%2FM2.mp3?alt=media&token=eb3917c3-cbca-4153-a3ee-acdfc7e85d49')}
-            style={styles.conversationTextBox}>
-            <View style={styles.conversationView}>
-              <Text style={styles.conversationText}>
-                Since I'm new here, I was wondering if you could tell me the bus schedule,
-                I need to get to the city museum next week.
-              </Text>
-              <AntDesign
-                    name="sound"
-                    size={48}
-                    color="black"
-                    style={styles.conversationIconSound}
-                  />
+        {data.map((res, i) => {
+          return(
+            <View key={i} style={styles.conversationView}>
+              <Image style={styles.conversationImage} source={res.gender === 'man' ? imageMan : imageWoman} />
+              <TouchableOpacity 
+                onPress={() => playSound(res.sound_url)}
+                style={styles.conversationTextBox}>
+                <View style={styles.conversationView}>
+                  <Text style={styles.conversationText}>{res.text}</Text>
+                  <AntDesign
+                        name="sound"
+                        size={48}
+                        color="black"
+                        style={styles.conversationIconSound}
+                      />
+                </View>
+              </TouchableOpacity>
             </View>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.conversationView}>
-          <Image style={styles.conversationImage} source={imageWoman} />
-          <TouchableOpacity 
-            onPress={() => playSound('https://firebasestorage.googleapis.com/v0/b/projectx-781a7.appspot.com/o/ConversationData%20%E0%B8%A3%E0%B8%A7%E0%B8%A1%2FWM2.mp3?alt=media&token=4b72d353-54c6-4e95-91ef-2dd6431e48cf')}
-            style={styles.conversationTextBox}>
-            <View style={styles.conversationView}>
-              <Text style={styles.conversationText}>
-                Well, I would tell you how to get there, but the schedule changes every week.
-              </Text>
-              <AntDesign
-                    name="sound"
-                    size={48}
-                    color="black"
-                    style={styles.conversationIconSound}
-                  />
-            </View>
-          </TouchableOpacity>
-        </View>
+          );
+        })}
         <View style={styles.conversationDescriptionBox}>
-          <Text>จากการสนทนาจะเห็นได้ว่า ผู้ชายขอร้องให้ผู้หญิงบอกตารางรถที่เขาจะไปพิพิธภัณฑ์ในเมืองอาทิตย์หน้าผู้หญิงตอบรับแต่สิ่งนั้นคือ ตารางรถนั้นเปลี่ยนทุกอาทิตย์</Text>
+          <Text>{description}</Text>
         </View>
       </ScrollView>
     </View>

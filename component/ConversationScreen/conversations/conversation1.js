@@ -7,6 +7,7 @@ import imageMan from './../../../assets/Conversation/young-man.png'
 import imageWoman from './../../../assets/Conversation/woman.png'
 import { AntDesign } from "@expo/vector-icons";
 import { Audio } from "expo-av";
+import * as firebase from "firebase";
 
 const Stack = createStackNavigator();
 
@@ -24,6 +25,29 @@ const Conversation1 = ({ navigation }) => {
       : undefined;
   }, [sound]);
 
+  const [data, SetItems] = React.useState([]);
+  const [description, setDescription] = React.useState("");
+  React.useEffect(() => {
+    const item = [];
+    firebase
+      .firestore()
+      .collection("conversation")
+      .doc('0')
+      .onSnapshot((querySnapshot) => {
+        setDescription(querySnapshot.data().description);
+        querySnapshot.data().data.forEach((doc) => {
+          const { gender, position, sound_url, text } = doc;
+          item.push({
+            gender,
+            position,
+            sound_url,
+            text,
+          });
+        });
+        SetItems(item);
+      });
+  }, []);
+
   const [loaded] = useFonts({
     Montserrat: require("../../../assets/static/Medium.ttf"),
   });
@@ -34,40 +58,28 @@ const Conversation1 = ({ navigation }) => {
   return (
     <View style={styles.ContainerVocabularyWord}>
       <ScrollView style={styles.scrollView}>
-        <View style={styles.conversationView}>
-          <Image style={styles.conversationImage} source={imageMan} />
-          <TouchableOpacity 
-            onPress={() => playSound('https://firebasestorage.googleapis.com/v0/b/projectx-781a7.appspot.com/o/ConversationData%20%E0%B8%A3%E0%B8%A7%E0%B8%A1%2FM1.mp3?alt=media&token=12eaa956-aa82-4de2-95c7-7b6a9e07c2f1')}
-            style={styles.conversationTextBox}>
-            <View style={styles.conversationView}>
-              <Text style={styles.conversationText}>Let's go to see a movie tonight. I already bought a ticket for you.</Text>
-              <AntDesign
-                    name="sound"
-                    size={48}
-                    color="black"
-                    style={styles.conversationIconSound}
-                  />
+        {data.map((res, i) => {
+          return(
+            <View key={i} style={styles.conversationView}>
+              <Image style={styles.conversationImage} source={res.gender === 'man' ? imageMan : imageWoman} />
+              <TouchableOpacity 
+                onPress={() => playSound(res.sound_url)}
+                style={styles.conversationTextBox}>
+                <View style={styles.conversationView}>
+                  <Text style={styles.conversationText}>{res.text}</Text>
+                  <AntDesign
+                        name="sound"
+                        size={48}
+                        color="black"
+                        style={styles.conversationIconSound}
+                      />
+                </View>
+              </TouchableOpacity>
             </View>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.conversationView}>
-          <Image style={styles.conversationImage} source={imageWoman} />
-          <TouchableOpacity 
-            onPress={() => playSound('https://firebasestorage.googleapis.com/v0/b/projectx-781a7.appspot.com/o/ConversationData%20%E0%B8%A3%E0%B8%A7%E0%B8%A1%2FWM1.mp3?alt=media&token=20215788-f5b0-4a14-beaf-fd7cda25c242')}
-            style={styles.conversationTextBox}>
-            <View style={styles.conversationView}>
-              <Text style={styles.conversationText}>Sorry, I just don't want to get a bad grade on my research project.</Text>
-              <AntDesign
-                    name="sound"
-                    size={48}
-                    color="black"
-                    style={styles.conversationIconSound}
-                  />
-            </View>
-          </TouchableOpacity>
-        </View>
+          );
+        })}
         <View style={styles.conversationDescriptionBox}>
-          <Text>จากการสนทนาจะเห็นได้ว่า ผู้ชายชวนผู้หญิงไปดูหนังเพราะได้ซื้อตั๋วไว้แล้ว แต่คำพูดของผู้หญิงเสียงคำว่า Sorryแสดงให้เห็นว่า เป็นการปฏิเสธ และตามด้วยข้อความคำพูดว่าเธอไม่ต้องการที่จะได้คะแนนไม่ดีในการทำโครงการวิจัยของเธอ</Text>
+          <Text>{description}</Text>
         </View>
       </ScrollView>
     </View>

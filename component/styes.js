@@ -450,9 +450,10 @@ const styles = StyleSheet.create({
     paddingRight: 10,
   },
   fixToText: {
+    width: '100%',
     flexDirection: "row",
     justifyContent: "space-between",
-    marginHorizontal: 16,
+    marginTop: 20
   },
   conversationTextBox: {
     backgroundColor: '#439de4', 
