@@ -79,11 +79,7 @@ const Conversation9 = ({ navigation }) => {
           );
         })}
         <View style={styles.conversationDescriptionBox}>
-<<<<<<< HEAD
-          <Text>จากการสนทนาแสดงให้เห็นว่าถ้าหากผู้ชายเขียนหมายเลขโทรศัพท์ให้ผู้หญิงไว้เขาจะติดต่อกลับไป และจากคำถามที่ว่าผู้หญิงจะทำอะไรต่อไป </Text>
-=======
           <Text>{description}</Text>
->>>>>>> 069d45fe01b45708440b3e424aaf683d4bc64296
         </View>
       </ScrollView>
     </View>
