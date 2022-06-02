@@ -11,6 +11,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { Audio } from "expo-av";
 import * as _ from 'lodash';
 import * as firebase from "firebase";
+import Dialog from "react-native-dialog";
 
 const Separator = () => <View style={styles.separator} />;
 const Stack = createStackNavigator();
@@ -69,7 +70,8 @@ const QuestionScreen = ({ navigation }) => {
   );
 };
 
-
+let score = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+let dataAnswer = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
 
 const QuestionLv1Screen = ({ navigation }) => {
   const [questionA, setQuestionA] = React.useState([]);
@@ -111,6 +113,10 @@ const QuestionLv1Screen = ({ navigation }) => {
         setQuestionA(itemQuestA);
         setQuestionB(itemQuestB);
       });
+
+      score = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      dataAnswer = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
+
   }, []);
 
   const [radioButtons1A1, setRadioButtons1A1] = useState([]);
@@ -158,18 +164,21 @@ const QuestionLv1Screen = ({ navigation }) => {
     radioButtons1B10,
   ];
   const [page, setPage] = useState(1);
-  let score = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   function onPressRadioButton(radioButtonsArray) {
     const [result] = radioButtonsArray.filter((item) => item.selected === true);
+    const index = radioButtonsArray.findIndex((item) => item.answer === true);
     score[result.no - 1] = result.selected === result.answer ? 1 : 0;
+    dataAnswer[result.no - 1] = { selected: result.value, answer: radioButtonsArray[index].value};
   }
 
+  const [showDialog, setShowDialog] = useState(false);
+  const [scoreQuestion, setScoreQuestion] = useState(0);
   function onSubmit() {
     let data = {
       score: _.sum(score),
       date_at: new Date(),
     };
-    
+
     firebase
       .firestore()
       .collection('scores')
@@ -178,7 +187,8 @@ const QuestionLv1Screen = ({ navigation }) => {
       .doc()
       .set(data)
       .then(function() {
-        navigation.goBack();
+        setScoreQuestion(data.score);
+        setShowDialog(true);
       });
   }
 
@@ -272,6 +282,31 @@ const QuestionLv1Screen = ({ navigation }) => {
           );
         }
       })}
+      <View style={styles.container}>
+        <Dialog.Container visible={showDialog}>
+          <Dialog.Title>Score</Dialog.Title>
+          <Dialog.Description>
+            <Text style={styles.dialogTextScore}>{scoreQuestion} / 20</Text>
+          </Dialog.Description>
+          <Dialog.Button 
+            label="OK" 
+            onPress={() => {
+              setShowDialog(false);
+              navigation.goBack();
+            }}
+            />
+          <Dialog.Button 
+            label="Show Answer" 
+            onPress={() => {
+              setShowDialog(false);
+              navigation.goBack();
+              navigation.navigate("QuestionShowAnswerScreen", {
+                data: dataAnswer
+              });
+            }}
+            />
+        </Dialog.Container>
+      </View>
     </ScrollView>
   );
 };
@@ -304,6 +339,9 @@ const QuestionLv2Screen = ({ navigation }) => {
         setText(itemText);
         setQuestion(itemQuestion);
       });
+
+      score = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      dataAnswer = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
   }, []);
 
   const [radioButtons21, setRadioButtons21] = useState([]);
@@ -316,7 +354,6 @@ const QuestionLv2Screen = ({ navigation }) => {
   const [radioButtons28, setRadioButtons28] = useState([]);
   const [radioButtons29, setRadioButtons29] = useState([]);
   const [radioButtons210, setRadioButtons210] = useState([]);
-  let score = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   let listRadio = [
     radioButtons21,
     radioButtons22,
@@ -332,9 +369,13 @@ const QuestionLv2Screen = ({ navigation }) => {
   const [page, setPage] = useState(1);
   function onPressRadioButton(radioButtonsArray) {
     const [result] = radioButtonsArray.filter((item) => item.selected === true);
+    const index = radioButtonsArray.findIndex((item) => item.answer === true);
     score[result.no - 1] = result.selected === result.answer ? 1 : 0;
+    dataAnswer[result.no - 1] = { selected: result.value, answer: radioButtonsArray[index].value};
   }
 
+  const [showDialog, setShowDialog] = useState(false);
+  const [scoreQuestion, setScoreQuestion] = useState(0);
   function onSubmit() {
     let data = {
       score: _.sum(score),
@@ -349,7 +390,8 @@ const QuestionLv2Screen = ({ navigation }) => {
       .doc()
       .set(data)
       .then(function() {
-        navigation.goBack();
+        setScoreQuestion(data.score);
+        setShowDialog(true);
       });
   }
 
@@ -369,7 +411,7 @@ const QuestionLv2Screen = ({ navigation }) => {
               <Text style={styles.questionTextQuestion2}>{i+1}.</Text>
               {text[i].map((res2, ii) => {
                 return (
-                  <Text style={styles.questionTextQuestion2}>{res2}</Text>
+                  <Text key={'text'+i+ii} style={styles.questionTextQuestion2}>{res2}</Text>
                 );
               })}
               <Text style={styles.questionTextQuestion2}></Text>
@@ -403,6 +445,31 @@ const QuestionLv2Screen = ({ navigation }) => {
           );
         }
       })}
+      <View style={styles.container}>
+        <Dialog.Container visible={showDialog}>
+          <Dialog.Title>Score</Dialog.Title>
+          <Dialog.Description>
+            <Text style={styles.dialogTextScore}>{scoreQuestion} / 20</Text>
+          </Dialog.Description>
+          <Dialog.Button 
+            label="OK" 
+            onPress={() => {
+              setShowDialog(false);
+              navigation.goBack();
+            }}
+            />
+          <Dialog.Button 
+            label="Show Answer" 
+            onPress={() => {
+              setShowDialog(false);
+              navigation.goBack();
+              navigation.navigate("QuestionShowAnswerScreen", {
+                data: dataAnswer
+              });
+            }}
+            />
+        </Dialog.Container>
+      </View>
     </ScrollView>
   );
 };
@@ -447,6 +514,9 @@ const QuestionLv3Screen = ({ navigation }) => {
         setText(itemText);
         setSoundURL(itemSound);
       });
+
+      score = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      dataAnswer = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
   }, []);
 
   const [radioButtons31, setRadioButtons31] = useState([]);
@@ -460,7 +530,6 @@ const QuestionLv3Screen = ({ navigation }) => {
   const [radioButtons39, setRadioButtons39] = useState([]);
   const [radioButtons310, setRadioButtons310] = useState([]);
   const [radioButtons311, setRadioButtons311] = useState([]);
-  let score = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   let listRadio = [
     radioButtons31,
     radioButtons32,
@@ -479,9 +548,13 @@ const QuestionLv3Screen = ({ navigation }) => {
   const [currenPage, setCurrenPage] = useState(1);
   function onPressRadioButton(radioButtonsArray) {
     const [result] = radioButtonsArray.filter((item) => item.selected === true);
+    const index = radioButtonsArray.findIndex((item) => item.answer === true);
     score[result.no - 1] = result.selected === result.answer ? 1 : 0;
+    dataAnswer[result.no - 1] = { selected: result.value, answer: radioButtonsArray[index].value};
   }
 
+  const [showDialog, setShowDialog] = useState(false);
+  const [scoreQuestion, setScoreQuestion] = useState(0);
   function onSubmit() {
     let data = {
       score: _.sum(score),
@@ -496,7 +569,8 @@ const QuestionLv3Screen = ({ navigation }) => {
       .doc()
       .set(data)
       .then(function() {
-        navigation.goBack();
+        setScoreQuestion(data.score);
+        setShowDialog(true);
       });
   }
   
@@ -549,7 +623,7 @@ const QuestionLv3Screen = ({ navigation }) => {
                         <Text style={styles.questionTextQuestion}>{currenPage}. {res2}</Text>
                         <RadioGroup 
                           containerStyle={{ alignItems: 'flex-start' }}
-                          radioButtons={listRadio[page-1]} 
+                          radioButtons={listRadio[currenPage-1]} 
                           onPress={onPressRadioButton} 
                         />
                       </View>
@@ -595,6 +669,31 @@ const QuestionLv3Screen = ({ navigation }) => {
           );
         }
       })}
+      <View style={styles.container}>
+        <Dialog.Container visible={showDialog}>
+          <Dialog.Title>Score</Dialog.Title>
+          <Dialog.Description>
+            <Text style={styles.dialogTextScore}>{scoreQuestion} / 20</Text>
+          </Dialog.Description>
+          <Dialog.Button 
+            label="OK" 
+            onPress={() => {
+              setShowDialog(false);
+              navigation.goBack();
+            }}
+            />
+          <Dialog.Button 
+            label="Show Answer" 
+            onPress={() => {
+              setShowDialog(false);
+              navigation.goBack();
+              navigation.navigate("QuestionShowAnswerScreen", {
+                data: dataAnswer
+              });
+            }}
+            />
+        </Dialog.Container>
+      </View>
     </ScrollView>
   );
 };

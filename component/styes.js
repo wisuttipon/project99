@@ -541,5 +541,11 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     marginHorizontal: 20
   },
+  dialogTextScore: {
+    padding: 10,
+    marginTop: 20,
+    fontSize: 20,
+    fontWeight: 'bold',
+  }
 });
 export default styles;

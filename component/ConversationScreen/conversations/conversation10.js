@@ -80,7 +80,10 @@ const Conversation10 = ({ navigation }) => {
         })}
         <View style={styles.conversationDescriptionBox}>
           <Text>{description}</Text>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7ba872690d924150107eeb0aac755e6b1777d80d
         </View>
       </ScrollView>
     </View>

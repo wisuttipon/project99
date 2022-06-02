@@ -39,6 +39,7 @@ import { Conversation8 } from "./ConversationScreen/conversations/conversation8"
 import { Conversation9 } from "./ConversationScreen/conversations/conversation9";
 import { Conversation10 } from "./ConversationScreen/conversations/conversation10";
 import { ScoreHistory, ScoreHistoryQuestion1, ScoreHistoryQuestion2, ScoreHistoryQuestion3 } from "./QuestionScreen/ScoreHistory";
+import { QuestionShowAnswerScreen } from "./QuestionScreen/QuestionShowAnswer";
 
 const Stack = createStackNavigator();
 
@@ -833,6 +834,30 @@ const Home = ({ navigation }) => {
           component={ScoreHistoryQuestion3}
           options={{
             title: "Score Question 3",
+            headerStyle: {
+              backgroundColor: "#439de4",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+            headerRight: () => (
+              <TouchableOpacity onPress={onLogout}>
+                <SimpleLineIcons
+                  name="logout"
+                  size={24}
+                  color="#fff"
+                  style={styles.inputIcon1}
+                />
+              </TouchableOpacity>
+            ),
+          }}
+        />
+        <Stack.Screen
+          name="QuestionShowAnswerScreen"
+          component={QuestionShowAnswerScreen}
+          options={{
+            title: "Question Answer",
             headerStyle: {
               backgroundColor: "#439de4",
             },
