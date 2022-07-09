@@ -332,8 +332,8 @@ const QuestionLv2Screen = ({ navigation }) => {
         setRadioButtons24(querySnapshot.data().data[3].answers);
         setRadioButtons25(querySnapshot.data().data[4].answers);
         setRadioButtons26(querySnapshot.data().data[5].answers);
-        setRadioButtons27(querySnapshot.data().data[7].answers);
-        setRadioButtons28(querySnapshot.data().data[8].answers);
+        setRadioButtons27(querySnapshot.data().data[6].answers);
+        setRadioButtons28(querySnapshot.data().data[7].answers);
         setRadioButtons29(querySnapshot.data().data[8].answers);
         setRadioButtons210(querySnapshot.data().data[9].answers);
         setText(itemText);
@@ -449,7 +449,7 @@ const QuestionLv2Screen = ({ navigation }) => {
         <Dialog.Container visible={showDialog}>
           <Dialog.Title>Score</Dialog.Title>
           <Dialog.Description>
-            <Text style={styles.dialogTextScore}>{scoreQuestion} / 20</Text>
+            <Text style={styles.dialogTextScore}>{scoreQuestion} / 10</Text>
           </Dialog.Description>
           <Dialog.Button 
             label="OK" 
@@ -673,7 +673,7 @@ const QuestionLv3Screen = ({ navigation }) => {
         <Dialog.Container visible={showDialog}>
           <Dialog.Title>Score</Dialog.Title>
           <Dialog.Description>
-            <Text style={styles.dialogTextScore}>{scoreQuestion} / 20</Text>
+            <Text style={styles.dialogTextScore}>{scoreQuestion} / 11</Text>
           </Dialog.Description>
           <Dialog.Button 
             label="OK" 

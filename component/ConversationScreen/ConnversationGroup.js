@@ -12,6 +12,13 @@ import VocabTest from "../../assets/Conversation/test.png";
 import VocabStudy from "../../assets/Conversation/study.png";
 import VocabCall from "../../assets/Conversation/calling.png";
 import VocabReading from "../../assets/Conversation/reading.png";
+import VocabEngagement from "../../assets/Conversation/engagement.png";
+import VocabCountries from "../../assets/Conversation/countries.png";
+import VocabPets from "../../assets/Conversation/pets.png";
+import VocabLanguages from "../../assets/Conversation/languages.png";
+import VocabDemographics from "../../assets/Conversation/demographics.png";
+import VocabOccupation from "../../assets/Conversation/occupation.png";
+import VocabForeigner from "../../assets/Conversation/foreigner.png";
 import { useFonts } from "expo-font";
 
 const Stack = createStackNavigator();
@@ -129,8 +136,82 @@ const ConversationScreen = ({ navigation }) => {
               
             </TouchableOpacity>
           </View>
+
+          <View style={styles.BodyVocabulary}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("conversation11")}
+              style={styles.ButtonVocabulary}
+            >
+              <Image style={styles.ConLogo} source={VocabEngagement} />
+              <Text style={styles.TextCon}>Engagement Conversation</Text>
+              
+            </TouchableOpacity>
+          </View>
          
+          <View style={styles.BodyVocabulary}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("conversation12")}
+              style={styles.ButtonVocabulary}
+            >
+              <Image style={styles.ConLogo} source={VocabCountries} />
+              <Text style={styles.TextCon}>Country Conversation</Text>
+              
+            </TouchableOpacity>
+          </View>
+          <View style={styles.BodyVocabulary}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("conversation13")}
+              style={styles.ButtonVocabulary}
+            >
+              <Image style={styles.ConLogo} source={VocabPets} />
+              <Text style={styles.TextCon}>Pet    Conversation</Text>
+              
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.BodyVocabulary}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("conversation14")}
+              style={styles.ButtonVocabulary}
+            >
+              <Image style={styles.ConLogo} source={VocabLanguages} />
+              <Text style={styles.TextCon}>Language Conversation</Text>
+              
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.BodyVocabulary}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("conversation15")}
+              style={styles.ButtonVocabulary}
+            >
+              <Image style={styles.ConLogo} source={VocabDemographics} />
+              <Text style={styles.TextCon}>Inhabited Conversation</Text>
+              
+            </TouchableOpacity>
+          </View>
           
+          <View style={styles.BodyVocabulary}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("conversation16")}
+              style={styles.ButtonVocabulary}
+            >
+              <Image style={styles.ConLogo} source={VocabOccupation} />
+              <Text style={styles.TextCon}>Occupation Conversation</Text>
+              
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.BodyVocabulary}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("conversation17")}
+              style={styles.ButtonVocabulary}
+            >
+              <Image style={styles.ConLogo} source={VocabForeigner} />
+              <Text style={styles.TextCon}>Foreigner Conversation</Text>
+              
+            </TouchableOpacity>
+          </View>
         </View>
       </ScrollView>
     </View>

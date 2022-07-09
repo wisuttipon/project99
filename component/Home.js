@@ -38,6 +38,13 @@ import { Conversation7 } from "./ConversationScreen/conversations/conversation7"
 import { Conversation8 } from "./ConversationScreen/conversations/conversation8";
 import { Conversation9 } from "./ConversationScreen/conversations/conversation9";
 import { Conversation10 } from "./ConversationScreen/conversations/conversation10";
+import { Conversation11 } from "./ConversationScreen/conversations/conversation11";
+import { Conversation12 } from "./ConversationScreen/conversations/conversation12";
+import { Conversation13 } from "./ConversationScreen/conversations/conversation13";
+import { Conversation14 } from "./ConversationScreen/conversations/conversation14";
+import { Conversation15 } from "./ConversationScreen/conversations/conversation15";
+import { Conversation16 } from "./ConversationScreen/conversations/conversation16";
+import { Conversation17 } from "./ConversationScreen/conversations/conversation17";
 import { ScoreHistory, ScoreHistoryQuestion1, ScoreHistoryQuestion2, ScoreHistoryQuestion3 } from "./QuestionScreen/ScoreHistory";
 import { QuestionShowAnswerScreen } from "./QuestionScreen/QuestionShowAnswer";
 
@@ -659,6 +666,181 @@ const Home = ({ navigation }) => {
             ),
           }}
         />
+
+        <Stack.Screen
+          name="conversation11"
+          component={Conversation11}
+          options={{
+            title: "Conversation 11",
+            headerStyle: {
+              backgroundColor: "#439de4",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+            headerRight: () => (
+              <TouchableOpacity onPress={onLogout}>
+                <SimpleLineIcons
+                  name="logout"
+                  size={24}
+                  color="#fff"
+                  style={styles.inputIcon1}
+                />
+              </TouchableOpacity>
+            ),
+          }}
+        />
+
+          <Stack.Screen
+          name="conversation12"
+          component={Conversation12}
+          options={{
+            title: "Conversation 12",
+            headerStyle: {
+              backgroundColor: "#439de4",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+            headerRight: () => (
+              <TouchableOpacity onPress={onLogout}>
+                <SimpleLineIcons
+                  name="logout"
+                  size={24}
+                  color="#fff"
+                  style={styles.inputIcon1}
+                />
+              </TouchableOpacity>
+            ),
+          }}
+        />
+                <Stack.Screen
+          name="conversation13"
+          component={Conversation13}
+          options={{
+            title: "Conversation 13",
+            headerStyle: {
+              backgroundColor: "#439de4",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+            headerRight: () => (
+              <TouchableOpacity onPress={onLogout}>
+                <SimpleLineIcons
+                  name="logout"
+                  size={24}
+                  color="#fff"
+                  style={styles.inputIcon1}
+                />
+              </TouchableOpacity>
+            ),
+          }}
+        />
+                <Stack.Screen
+          name="conversation14"
+          component={Conversation14}
+          options={{
+            title: "Conversation 14",
+            headerStyle: {
+              backgroundColor: "#439de4",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+            headerRight: () => (
+              <TouchableOpacity onPress={onLogout}>
+                <SimpleLineIcons
+                  name="logout"
+                  size={24}
+                  color="#fff"
+                  style={styles.inputIcon1}
+                />
+              </TouchableOpacity>
+            ),
+          }}
+        />
+
+        <Stack.Screen
+          name="conversation15"
+          component={Conversation15}
+          options={{
+            title: "Conversation 15",
+            headerStyle: {
+              backgroundColor: "#439de4",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+            headerRight: () => (
+              <TouchableOpacity onPress={onLogout}>
+                <SimpleLineIcons
+                  name="logout"
+                  size={24}
+                  color="#fff"
+                  style={styles.inputIcon1}
+                />
+              </TouchableOpacity>
+            ),
+          }}
+        />
+
+        <Stack.Screen
+          name="conversation16"
+          component={Conversation16}
+          options={{
+            title: "Conversation 16",
+            headerStyle: {
+              backgroundColor: "#439de4",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+            headerRight: () => (
+              <TouchableOpacity onPress={onLogout}>
+                <SimpleLineIcons
+                  name="logout"
+                  size={24}
+                  color="#fff"
+                  style={styles.inputIcon1}
+                />
+              </TouchableOpacity>
+            ),
+          }}
+        />
+
+        <Stack.Screen
+          name="conversation17"
+          component={Conversation17}
+          options={{
+            title: "Conversation 17",
+            headerStyle: {
+              backgroundColor: "#439de4",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+            headerRight: () => (
+              <TouchableOpacity onPress={onLogout}>
+                <SimpleLineIcons
+                  name="logout"
+                  size={24}
+                  color="#fff"
+                  style={styles.inputIcon1}
+                />
+              </TouchableOpacity>
+            ),
+          }}
+        />
+
+
 
         <Stack.Screen
           name="Question"
